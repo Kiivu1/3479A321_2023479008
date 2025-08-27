@@ -7,7 +7,13 @@ Matricula: 2023473008
 RUT: 21.761.140-7
 
 
-A new Flutter project.
+Descripcion:
+- Creacion de un nuevo proyecto en flutter, para familiarizarse con el entorno de trabajo
+- Creacion de una app que se conecta con el Emulador de Android(se utiliza el Pixel 7)
+- Hay botones de FooterButtons que: añaden, resten y reinicien el contador. Ademas de cambiar el color del fondo.
+
+
+A not so new Flutter project.
 
 
 ## Getting Started
