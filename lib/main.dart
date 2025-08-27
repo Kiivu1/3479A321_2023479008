@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
       ),
-      home: const MyHomePage(title: 'Cool Stuffff'),
+      home: const MyHomePage(title: '2023479008'),
     );
   }
 }
@@ -54,13 +54,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int counterStart = 10;
-  int _counter = 0;
+  int _counter = 10;         //contador
+  int _counterStart = 10;   //valor inicial del contador
 
-  Color baseColor = Colors.yellow;
-  Color newColor = Colors.red;
-
-  void _incrementCounter() {
+  Color _bgColor = Colors.white; //color de fondo, se usara para el backgroundColor. PS: no se como hacerlo con ColorScheme
+  Color _colorB = Colors.purple;  //color nuevo para la app
+  
+  void _incrementCounter() { //añade al contador, no quitare los comentarios originales -> IMPORTANTE
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -71,18 +71,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _decreaseCounter() {
+  void _decreaseCounter() { //funcion que resta al contador
     setState((){
       _counter--;
     });
   }
 
-  void _resetCounter(){
+  void _resetCounter(){ //funcion que reinicia el contador
     setState((){
-      _counter = 0;
+      _counter = _counterStart;
     });
   }
 
+  void _changeColor(){ //funcion que cambiar el color del fondo
+    setState((){
+      _bgColor = _colorB;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +102,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+
+        // variable original: backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: _bgColor, //cambie la variable
+
+
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
@@ -123,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //HOLA COMENTARION DE PRUEBA
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            const Text('Pixel Art sobre una grilla personalizable'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -132,11 +141,39 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: null,
+        tooltip: 'Nothing',
         child: const Icon(Icons.star),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-      
+      persistentFooterButtons: [
+        ..._makeFooterButtons() //usar el ... para desempacar la lista
+      ],
     );
+  }
+
+  //lista de botones, pedido en el item 6
+  List<Widget> _makeFooterButtons(){
+    return [
+      FloatingActionButton(                 //añadir
+        onPressed: _incrementCounter,
+        tooltip: 'Increase',
+        child: const Icon(Icons.add),
+      ),
+      FloatingActionButton(                 //disminuir 
+        onPressed: _decreaseCounter,
+        tooltip: 'Decrease',
+        child: const Icon(Icons.remove),
+      ),
+      FloatingActionButton(                 //reiniciar
+        onPressed: _resetCounter,
+        tooltip: 'Reset',
+        child: const Icon(Icons.refresh),
+      ),
+      FloatingActionButton(                 //cambiar color
+        onPressed: _changeColor,
+        tooltip: 'Change Color',
+        child: const Icon(Icons.brush),
+      )
+    ];
   }
 }
