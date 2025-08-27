@@ -1,6 +1,14 @@
 # lab_21_08_25
 
+Carrera: IDVRV
+Fecha: 26 - 08 - 2025
+Estudiante: Ivan Eduardo Obando Alcayaga
+Matricula: 2023473008
+RUT: 21.761.140-7
+
+
 A new Flutter project.
+
 
 ## Getting Started
 
